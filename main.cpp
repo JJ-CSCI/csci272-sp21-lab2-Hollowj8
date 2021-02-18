@@ -9,8 +9,18 @@ enum class Compass {N, S, W, E};
 
 // Write your code here
 class GPS {
+private: 
+  double latitude{0.0, 90.0};
+  int latitudeDirection{Compass::N, Compass::S};
+  double longitude{0.0, 180.0};
+  int longitudeDirection{Compass::W, Compass::E};
 
-};
+public:
+  double getLatitude(){return latitude;}
+  int getLatitudeDirection() {return latitudeDirection;}
+  double getLongitude() {return longitude;}
+  int getLongitudeDirection(){return longitudeDirection;}
+  };
 
 //------------------------------
 //   DO NOT MODIFY TEST CASES
