@@ -9,18 +9,53 @@ enum class Compass {N, S, W, E};
 
 // Write your code here
 class GPS {
-private: 
-  double latitude {0.0, 90.0};
-  int latitudeDirection [Compass::N, Compass::S];
-  double longitude [0.0, 180];
-  int longitudeDirection [Compass::W, Compass::E];
-
+  double latitude;
+  Compass latitudeDirection;
+  double longitude;
+  Compass longitudeDirection;
 public:
-  double getLatitude(){return latitude;}
-  int getLatitudeDirection() {return latitudeDirection;}
-  double getLongitude() {return longitude;}
-  int getLongitudeDirection(){return longitudeDirection;}
-  };
+  GPS(){
+    latitude = 0.0;
+    latitudeDirection = Compass::N;
+    longitude = 0.0;
+    longitudeDirection = Compass::W;
+  }
+  GPS(double lat, double lon){
+    if ((0 <= lat) && (lat <= 90))
+      latitude = lat;
+    else
+      latitude = 0.0;
+      latitudeDirection = Compass::N;
+    if ((0 <=  lon) && (lon <= 180))
+      longitude = lon;
+    else
+      longitude = 0.0;
+      longitudeDirection = Compass::W;
+  }
+  GPS(double lat, Compass latd, double lon, Compass lond){
+    if ((0 <= lat) && (lat <= 90))
+      latitude = lat;
+    else
+      latitude = 0.0;
+    if (latd == Compass::N || latd == Compass::S)
+      latitudeDirection = latd;
+    else
+      latitudeDirection = Compass::N;
+    if ((0 <= lon) && (lon <= 180))
+      longitude = lon;
+    else 
+      longitude = 0.0;
+    if (lond == Compass::W || lond == Compass::E)
+      longitudeDirection = lond;
+    else
+      longitudeDirection = Compass::W;
+  }
+
+  double getLatitude() {return latitude; }
+  Compass getLatitudeDirection() {return latitudeDirection; }
+  double getLongitude() {return longitude; }
+  Compass getLongitudeDirection() {return longitudeDirection; }
+};
 
 //------------------------------
 //   DO NOT MODIFY TEST CASES
